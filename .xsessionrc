@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ "$DESKTOP_SESSION" == "dwm" ]
+then
+    xset r rate 275 33
+    xsetroot -solid "#101010"
+    .screenlayout/default.sh
+    dwmbar &
+fi

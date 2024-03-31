@@ -1,0 +1,41 @@
+// Place your key bindings in this file to override the defaults
+[
+    // Disable some default bindings
+    {
+        "key": "ctrl+k",
+        "command": "-extension.vim_ctrl+k",
+        "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-extension.vim_ctrl+p",
+        "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    {
+        "key": "ctrl+shift+,",
+        "command": "-editor.action.inPlaceReplace.up",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+
+    // Go to terminal and back
+    {
+        "key": "ctrl+shift+.",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key":     "ctrl+shift+.",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when":    "terminalFocus"
+    },
+    // Hide terminal
+    {
+        "key":     "ctrl+shift+,",
+        "command": "workbench.action.togglePanel",
+    },
+    {
+        "key": "ctrl+f10",
+        "command": "editor.debug.action.runToCursor"
+    },
+
+
+]
