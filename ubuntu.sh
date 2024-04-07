@@ -10,18 +10,13 @@
 gsettings set org.gnome.desktop.peripherals.keyboard delay 275
 gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 33
 
-# Add neovim repo
-sudo add-apt-repository -y ppa:neovim-ppa/unstable
-sudo apt update
-
 # Install packages
 sudo apt install -y \
-    neovim \
     fish \
     kitty \
     fd-find \
     ripgrep \
-    build-essentials \
+    build-essential \
     git \
     autojump \
     xclip \
@@ -61,9 +56,6 @@ then
     cargo install eza
 fi
 
-# Refresh fonts
-fc-cache -fv
-
 # Install custom libXft to avoid dwm crash
 sudo apt install -y xutils-dev
 git clone https://github.com/uditkarode/libxft-bgra
@@ -95,18 +87,21 @@ then
 fi
 
 # Install neovim
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-sudo rm -rf /opt/nvim
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
-rm nvim-linux64.tar.gz
-sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/vi
-sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/vim
-sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/nvim
+if ! command -v nvim &> /dev/null
+then
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+    sudo rm -rf /opt/nvim
+    sudo tar -C /opt -xzf nvim-linux64.tar.gz
+    rm nvim-linux64.tar.gz
+    sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/vi
+    sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/vim
+    sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/nvim
+fi
 
 # Install vscode
 if ! command -v code &> /dev/null
 then
-    wget 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' code.deb
+    wget 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -O code.deb
     sudo apt install ./code.deb
     code --install-extension ms-python.debugpy
     code --install-extension ms-python.python
@@ -132,3 +127,7 @@ cp .config/Code/User/settings.json           ~/.config/Code/User/settings.json
 
 # Directories
 cp -r .fonts ~/.fonts
+
+# Refresh fonts
+fc-cache -fv
+
