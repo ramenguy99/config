@@ -2,7 +2,7 @@
     "window.menuBarVisibility": "toggle",
     "editor.codeLens": false,
     "editor.inlayHints.enabled": "off",
-    "editor.semanticHighlighting.enabled": false,
+    "editor.semanticHighlighting.enabled": true,
     "extensions.ignoreRecommendations": true,
     "files.simpleDialog.enable": true,
     "gitlens.showWelcomeOnInstall": false,
