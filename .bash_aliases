@@ -1,0 +1,7 @@
+alias duh="du -hs .[^.]* * | sort -h"
+alias dfm="df -hT -x tmpfs -x efivarfs"
+alias fd="fdfind"
+alias xclip="xclip -sel clip"
+alias ls="eza"
+alias ll="eza -lah"
+alias lsg="eza -l --git --header --git-repos"
