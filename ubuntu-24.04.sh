@@ -29,7 +29,8 @@ sudo apt install -y \
     arandr \
     libx11-dev \
     libxinerama-dev \
-    libxft-dev
+    libxft-dev \
+    picom
 
 # Config git
 git config --global user.email "dmylos@yahoo.it"
@@ -56,17 +57,6 @@ if ! command -v eza &> /dev/null
 then
     cargo install eza
 fi
-
-# # Install custom libXft to avoid dwm crash
-# sudo apt install -y xutils-dev
-# git clone https://github.com/uditkarode/libxft-bgra
-# cd libxft-bgra
-# git checkout 072cd202c0f4f757b32deac531586bc0429c8401
-# sh autogen.sh --sysconfdir=/etc --prefix=/usr --mandir=/usr/share/man
-# sudo make install
-# sudo ln -sf /usr/lib/libXft.so.2.3.3 /lib/x86_64-linux-gnu/libXft.so.2
-# rm -rf libxft-bgra
-# cd ..
 
 # Build dwm
 if ! command -v dwm &> /dev/null
