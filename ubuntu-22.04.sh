@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -ex
 
 # TODO:
 #
@@ -12,7 +12,6 @@ gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 33
 
 # Install packages
 sudo apt install -y \
-    fish \
     kitty \
     fd-find \
     ripgrep \
@@ -27,10 +26,8 @@ sudo apt install -y \
     btop \
     python-is-python3 \
     suckless-tools \
-    arandr    
-
-# Change default shell to fish
-chsh -s /usr/bin/fish
+    arandr \
+    picom
 
 # Config git
 git config --global user.email "dmylos@yahoo.it"
@@ -45,6 +42,8 @@ if ! command -v rustup &> /dev/null
 then
     # Download rust
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    
+    source ~/.cargo/env
 
     # Download rust-analyzer
     rustup component add rust-analyzer
@@ -98,6 +97,16 @@ then
     sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/nvim
 fi
 
+# Install miniconda
+if ! command -v conda &> /dev/null
+then
+    mkdir -p ~/miniconda3
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+    bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+    rm -rf ~/miniconda3/miniconda.sh
+    ~/miniconda3/bin/conda init bash
+fi
+
 # Install vscode
 if ! command -v code &> /dev/null
 then
@@ -112,12 +121,11 @@ then
     code --install-extension vscodevim.vim
 fi
 
-# Add aliases
-fish aliases.fish
 
 # Files
-cp .config/fish/config.fish                  ~/.config/fish/config.fish
-cp .config/fish/functions/fish_greeting.fish ~/.config/fish/functions/fish_greeting.fish
+mkdir -p ~/.config/kitty
+mkdir -p ~/.config/nvim
+mkdir -p ~/.config/Code/User
 cp .config/kitty/kitty.conf                  ~/.config/kitty/kitty.conf
 cp .xsessionrc                               ~/.xsessionrc
 cp .bash_aliases                             ~/.bash_aliases
@@ -131,3 +139,6 @@ cp -r .fonts ~/.fonts
 # Refresh fonts
 fc-cache -fv
 
+# Configure bash history
+sed -i s/HISTSIZE=.\*/HISTSIZE=100000/ ~/.bashrc
+sed -i s/HISTFILESIZE=.\*/HISTFILESIZE=100000/ ~/.bashrc

@@ -112,6 +112,7 @@ then
     code --install-extension vscodevim.vim
 fi
 
+
 # Files
 mkdir -p ~/.config/kitty
 mkdir -p ~/.config/nvim
@@ -130,4 +131,5 @@ cp -r .fonts ~/.fonts
 fc-cache -fv
 
 # Configure bash history
-
+sed -i s/HISTSIZE=.\*/HISTSIZE=100000/ ~/.bashrc
+sed -i s/HISTFILESIZE=.\*/HISTFILESIZE=100000/ ~/.bashrc
