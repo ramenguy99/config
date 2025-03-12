@@ -129,3 +129,5 @@ cp -r .fonts ~/.fonts
 # Refresh fonts
 fc-cache -fv
 
+# Configure bash history
+

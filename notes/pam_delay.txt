@@ -1,0 +1,4 @@
+/etc/pam.d/login
+    auth       optional   pam_faildelay.so  delay=50000
+/etc/pam.d/common-auth
+    auth    [success=2 default=ignore]  pam_unix.so nullok nodelay
