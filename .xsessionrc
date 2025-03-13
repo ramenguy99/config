@@ -7,4 +7,5 @@ then
     xsetroot -solid "#101010"
     .screenlayout/default.sh
     dwmbar &
+    nm-applet &
 fi
