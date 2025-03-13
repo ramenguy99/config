@@ -1,7 +1,6 @@
 {
     "window.menuBarVisibility": "toggle",
     "editor.codeLens": false,
-    "editor.inlayHints.enabled": "off",
     "editor.semanticHighlighting.enabled": true,
     "extensions.ignoreRecommendations": true,
     "files.simpleDialog.enable": true,
@@ -21,5 +20,23 @@
     "gitlens.hovers.enabled": false,
     "gitlens.hovers.avatars": false,
     "gitlens.fileAnnotations.dismissOnEscape": false,
-    "gitlens.ai.experimental.generateCommitMessage.enabled": false
+    "gitlens.ai.experimental.generateCommitMessage.enabled": false,
+    "editor.minimap.enabled": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "cmake.configureOnOpen": false,
+    "cmake.showOptionsMovedNotification": false,
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ],
+    "python.createEnvironment.trigger": "off",
+    "svelte.enable-ts-plugin": true,
+    "editor.renderWhitespace": "none",
+    "terminal.integrated.persistentSessionScrollback": 1000,
+    "terminal.integrated.scrollback": 10000,
+    "editor.inlayHints.enabled": "off",
+    "editor.rulers": [
+        80,
+    ],
+    "diffEditor.renderSideBySide": true,
 }
