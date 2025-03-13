@@ -62,7 +62,8 @@ cd libxft-bgra
 git checkout 072cd202c0f4f757b32deac531586bc0429c8401
 sh autogen.sh --sysconfdir=/etc --prefix=/usr --mandir=/usr/share/man
 sudo make install
-sudo ln -sf /usr/lib/libXft.so.2.3.3 /lib/x86_64-linux-gnu/libXft.so.2
+# Old way, likely to break, new way is to link statically with the just built libxft 
+# sudo ln -sf /usr/lib/libXft.so.2.3.3 /lib/x86_64-linux-gnu/libXft.so.2
 rm -rf libxft-bgra
 cd ..
 
@@ -71,6 +72,8 @@ if ! command -v dwm &> /dev/null
 then
     sudo apt build-dep -y dwm
     cd dwm
+
+    export XFT_LINKER_ARGS="/usr/lib/libXft.a -lfreetype -lXrender"
     make -j
     sudo make install PREFIX=/usr
     cd ..
