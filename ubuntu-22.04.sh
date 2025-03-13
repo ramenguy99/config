@@ -3,8 +3,9 @@
 # TODO:
 #
 # dwmbar:
-# - gpu usage
-# - printf style justify to have it not move around
+# - show main internet connection? e.g. something from nmcli?
+# - fix wifi to not show anything when not connected, use nmcli?
+# - gpu usage (need gpu detection / portable solution / fallback to none)
 
 # Adjust delay before repeating a keypress
 gsettings set org.gnome.desktop.peripherals.keyboard delay 275
@@ -78,6 +79,14 @@ then
     sudo make install PREFIX=/usr
     cd ..
     sudo cp dwm.desktop /usr/share/xsessions
+fi
+
+# Install dwmbar
+if ! command -v dwmbar &> /dev/null
+then
+    cd dwmbar
+    sudo ./install.sh
+    cd ..
 fi
 
 # If a battery is detected install TLP for power management
