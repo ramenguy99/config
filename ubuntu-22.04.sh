@@ -1,8 +1,10 @@
 #!/bin/bash -ex
 
+
 # TODO:
 #
 # dwmbar:
+# - do not show battery if not a laptop (detect at install / runtime)
 # - show main internet connection? e.g. something from nmcli?
 # - fix wifi to not show anything when not connected, use nmcli?
 # - gpu usage (need gpu detection / portable solution / fallback to none)
@@ -28,6 +30,7 @@ sudo apt install -y \
     python-is-python3 \
     suckless-tools \
     arandr \
+    libxfixes-dev \
     picom
 
 # Config git
@@ -42,7 +45,7 @@ sudo update-alternatives --set x-terminal-emulator /usr/bin/kitty
 if ! command -v rustup &> /dev/null
 then
     # Download rust
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     
     source ~/.cargo/env
 
@@ -62,6 +65,7 @@ then
     cd clipmenu
     make -j
     sudo make install
+    cd ..
 fi
 
 # Install custom libXft to avoid dwm crash
@@ -81,7 +85,6 @@ if ! command -v dwm &> /dev/null
 then
     sudo apt build-dep -y dwm
     cd dwm
-
     export XFT_LINKER_ARGS="/usr/lib/libXft.a -lfreetype -lXrender"
     make -j
     sudo make install PREFIX=/usr
@@ -108,13 +111,13 @@ fi
 # Install neovim
 if ! command -v nvim &> /dev/null
 then
-    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
     sudo rm -rf /opt/nvim
-    sudo tar -C /opt -xzf nvim-linux64.tar.gz
-    rm nvim-linux64.tar.gz
-    sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/vi
-    sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/vim
-    sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/nvim
+    sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+    rm nvim-linux-x86_64.tar.gz
+    sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/bin/vi
+    sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/bin/vim
+    sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/bin/nvim
 fi
 
 # Install miniconda
@@ -131,7 +134,7 @@ fi
 if ! command -v code &> /dev/null
 then
     wget 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -O code.deb
-    sudo apt install ./code.deb
+    sudo apt install -y ./code.deb
     code --install-extension ms-python.debugpy
     code --install-extension ms-python.python
     code --install-extension ms-python.vscode-pylance
@@ -163,5 +166,11 @@ fc-cache -fv
 sed -i s/HISTSIZE=.\*/HISTSIZE=100000/ ~/.bashrc
 sed -i s/HISTFILESIZE=.\*/HISTFILESIZE=100000/ ~/.bashrc
 
+# Force color prompt
+sed -i s/#.*force_color_prompt=.*/force_color_prompt=yes/ ~/.bashrc
+
 # Add CM_DIR to bashrc
 grep -q CM_DIR ~/.bashrc || (echo >> ~/.bashrc && echo 'export CM_DIR=$HOME/.clipmenu' >> ~/.bashrc)
+
+# Add XTERM to bashrc
+grep -q "TERM=xterm" ~/.bashrc || sed -i "4i export TERM=xterm" ~/.bashrc
