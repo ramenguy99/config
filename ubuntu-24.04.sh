@@ -31,6 +31,7 @@ sudo apt install -y \
     libx11-dev \
     libxinerama-dev \
     libxft-dev \
+    libxfixes-dev \
     picom
 
 # Config git
@@ -96,13 +97,13 @@ fi
 # Install neovim
 if ! command -v nvim &> /dev/null
 then
-    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
     sudo rm -rf /opt/nvim
-    sudo tar -C /opt -xzf nvim-linux64.tar.gz
-    rm nvim-linux64.tar.gz
-    sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/vi
-    sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/vim
-    sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/nvim
+    sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+    rm nvim-linux-x86_64.tar.gz
+    sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/bin/vi
+    sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/bin/vim
+    sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/bin/nvim
 fi
 
 # Install miniconda

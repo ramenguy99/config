@@ -79,8 +79,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_base01, "-nf", col_base04, "-sb", col_base0D, "-sf", col_base00, NULL };
 static const char *clipmenucmd[]  = { "clipmenu",              "-fn", dmenufont, "-nb", col_base01, "-nf", col_base04, "-sb", col_base0D, "-sf", col_base00, NULL };
-// static const char *termcmd[]  = { "kitty", NULL };
-static const char *termcmd[]  = { "ghostty", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
+// static const char *termcmd[]  = { "ghostty", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
 
 static const char *mutecmd[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
