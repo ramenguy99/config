@@ -59,6 +59,14 @@ then
     cargo install eza
 fi
 
+# Install clipmenu
+if ! command -v clipmenu &> /dev/null
+then
+    cd clipmenu
+    make -j
+    sudo make install
+fi
+
 # Build dwm
 if ! command -v dwm &> /dev/null
 then

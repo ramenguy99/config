@@ -56,6 +56,14 @@ then
     cargo install eza
 fi
 
+# Install clipmenu
+if ! command -v clipmenu &> /dev/null
+then
+    cd clipmenu
+    make -j
+    sudo make install
+fi
+
 # Install custom libXft to avoid dwm crash
 sudo apt install -y xutils-dev
 git clone https://github.com/uditkarode/libxft-bgra
