@@ -150,3 +150,6 @@ fc-cache -fv
 # Configure bash history
 sed -i s/HISTSIZE=.\*/HISTSIZE=100000/ ~/.bashrc
 sed -i s/HISTFILESIZE=.\*/HISTFILESIZE=100000/ ~/.bashrc
+
+# Add CM_DIR to bashrc
+grep -q CM_DIR ~/.bashrc || (echo >> ~/.bashrc && echo 'export CM_DIR=$HOME/.clipmenu' >> ~/.bashrc)
