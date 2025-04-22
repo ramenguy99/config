@@ -123,7 +123,7 @@ fi
 if ! command -v code &> /dev/null
 then
     wget 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -O code.deb
-    sudo apt install -y ./code.deb
+    sudo apt install -y --force-yes ./code.deb
     code --install-extension ms-python.debugpy
     code --install-extension ms-python.python
     code --install-extension ms-python.vscode-pylance
@@ -163,3 +163,5 @@ grep -q CM_DIR ~/.bashrc || (echo >> ~/.bashrc && echo 'export CM_DIR=$HOME/.cli
 
 # Add XTERM to bashrc
 grep -q "TERM=xterm" ~/.bashrc || sed -i "4i export TERM=xterm" ~/.bashrc
+
+sync

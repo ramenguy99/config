@@ -3,7 +3,7 @@
 if [ "$DESKTOP_SESSION" == "dwm" ]
 then
     picom &
-    CM_DIR=$HOME/.clipmenu clipmenud &
+    clipmenud &
     xset r rate 275 33
     xsetroot -solid "#101010"
     .screenlayout/default.sh
