@@ -17,3 +17,10 @@
 - Reboot and enter DWM
 - Setup pam delay and sudo if needed (see `notes/`)
 
+TODO:
+- [ ] Substitute code with codium  
+    - [ ] Move config
+    - [ ] Switch to clangd for C/C++
+    - [ ] Add slang extension to codium marketplace
+
+
