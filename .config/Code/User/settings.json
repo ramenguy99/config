@@ -38,5 +38,72 @@
     "editor.rulers": [
         80,
     ],
-    "editor.selectionClipboard": false
+    "editor.selectionClipboard": false,
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "c"],
+            "commands": ["C_Cpp.SwitchHeaderSource"]
+        },
+        {
+            "before": ["<leader>", "v"],
+            "commands": ["workbench.action.splitEditor"]
+        },
+        {
+            "before": ["<leader>", "V"],
+            "commands": ["workbench.action.splitEditorDown"]
+        },
+        {
+            "before": ["<leader>", "A"],
+            "commands": ["workbench.action.closeAllEditors"]
+        },
+        {
+            "before": ["<leader>", "a"],
+            "commands": ["workbench.action.closeEditorsInOtherGroups", "workbench.action.focusActiveEditorGroup"]
+        },
+        {
+            "before": ["<leader>", "Q"],
+            "commands": ["workbench.action.closeEditorsInGroup"]
+        },
+        {
+            "before": ["<leader>", "q"],
+            "commands": ["workbench.action.closeActiveEditor"]
+        },
+        {
+            "before": ["<leader>", "j"],
+            "commands": ["workbench.action.focusPreviousGroup"]
+        },
+        {
+            "before": ["<leader>", "k"],
+            "commands": ["workbench.action.focusNextGroup"]
+        },
+        {
+            "before": ["<leader>", "d"],
+            "commands": ["editor.action.revealDefinition"]
+        },
+        {
+            "before": ["<leader>", "D"],
+            "commands": ["editor.action.revealDeclaration"]
+        },
+        {
+            "before": ["<leader>", "p"],
+            "commands": ["workbench.action.quickOpen"]
+        },
+        {
+            "before": ["<leader>", "P"],
+            "commands": ["workbench.action.focusNextGroup", "workbench.action.quickOpen"]
+        },
+        {
+            "before": ["<leader>", "S"],
+            "commands": ["workbench.action.showAllSymbols"]
+        },
+        {
+            "before": ["<leader>", "s"],
+            "commands": ["workbench.action.gotoSymbol"]
+        },
+        {
+            "before": ["<leader>", "g"],
+            "commands": ["git.openChange"]
+        },
+    ],
 }
