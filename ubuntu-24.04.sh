@@ -8,6 +8,7 @@
 # - show main internet connection? e.g. something from nmcli?
 # - fix wifi to not show anything when not connected, use nmcli?
 # - gpu usage (need gpu detection / portable solution / fallback to none)
+# - cpu usage is wrong?
 
 # Adjust delay before repeating a keypress
 gsettings set org.gnome.desktop.peripherals.keyboard delay 275
@@ -90,7 +91,7 @@ then
 fi
 
 # If a battery is detected install TLP for power management
-if [ -d /sys/class/power_supply/BAT? ]:
+if [ -d /sys/class/power_supply/BAT? ]
 then
     sudo apt install -y tlp
     sudo systemctl enable tlp.service
